@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 캐스캐이딩</title>
+
+    <style>
+        p {
+            color: red;
+        }
+
+        p {
+            color: blue;  /*This code works. The color of p will be blue.*/
+        }
+        
+        header h3 {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <p>순서 캐스케이딩</p>
+    
+    <header>
+        <h3>디테일 캐스케이딩</h3>
+    </header>
+    
+    <h4 style = "color:green;" id="color" class="color">선택자 캐스케이딩</h4>
+</body>
+</html>
