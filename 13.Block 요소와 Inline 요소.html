@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block 요소와 Inline 요소</title>
+
+    <style>
+        p {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            margin-top: 100px;
+        }
+
+        a {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin-top: 100px;  /*Inline components are not affected by margin or padding.*/
+        }
+    </style>
+</head>
+<body>
+    <!-- Block 요소 -->
+    <p>Block 요소</p>
+    <p>Block 요소</p>
+    <p>Block 요소</p>
+
+    <!-- Inline 요소 -->
+    <a href="#">Inline 요소</a>
+    <a href="#">Inline 요소</a>
+    <a href="#">Inline 요소</a>
+</body>
+</html>
