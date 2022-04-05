@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Transform</title>
+
+    <style>
+        .transform {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        margin: 200px 0 0 200px;
+        /* transform: rotate(45deg); */
+        /* transform: scale(2, 3); */
+        /* transform: translate(100px, 200px); */
+        transform: skew(10deg, 20deg);
+        
+        /* 브라우저 호환 코드: 항상 작동하는 것은 아니긴 함. */
+        -webkit-transform: skew(10deg, 20deg);
+        -moz-transform: skew(10deg, 20deg);
+        -ms-transform: skew(10deg, 20deg);
+        -o-transform: skew(10deg, 20deg);
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="transform"></div>
+</body>
+</html>
