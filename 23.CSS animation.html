@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Animation</title>
+
+    <style>
+        .animation {
+            width: 300px;
+            height: 300px;
+            background-color: yellow;
+
+            animation-name: changeWidth;
+            animation-duration: 3s;
+            animation-timing-function: linear;
+            animation-delay: 1s;
+
+            /*
+            한 줄로 정리하면 다음과 같이 쓸 수 있다.
+            .animation{
+               animation: changeWidth 3s linear 1s 6 alternate;
+           }
+           */
+
+            animation-iteration-count: 6;
+            /* 무한 반복시키고 싶으면 6 대신 infinity를 줄 수도 있음. */
+            /* count는 from --> to, to -- from 각각 1회로 카운팅 된다. */
+            animation-direction: alternate; /* 방향은 왔다갔다 */
+        }
+
+        @keyframes changeWidth {
+            from {
+                width: 300px;
+            } to {
+                  width: 600px;
+              }
+        }
+    </style>
+</head>
+
+<body>
+<div class="animation"></div>
+</body>
+</html>
