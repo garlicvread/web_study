@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GRID</title>
+
+    <style>
+        div {
+            border: 5px solid darkgreen;
+            margin: 20px;
+        }
+
+        #container1 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /*윗줄은 grid-template-rows: 1fr 1fr 1fr; 과 같은 뜻*/
+
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        #container2 {
+            display: grid;
+            grid-template-columns: 1fr 200px 1fr;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>TOP</div>
+
+    <div id="container1">
+        <div>LEFT</div>
+        <div>CENTER</div>
+        <div>RIGHT</div>
+    </div>
+
+    <div id="container2">
+        <div>2nd LEFT</div>
+        <div>2nd CENTER</div>
+        <div>2nd RIGHT</div>
+    </div>
+
+    <div>BOTTOM</div>
+</body>
+</html>
