@@ -8,13 +8,45 @@
 
     <style>
         h {
+            border-bottom: 3px solid darkgreen;
+            padding: 10px;
             font-family: serif, sans-serif;
         }
 
+        h1 a {
+            text-decoration: none;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        ol {
+            margin-top: 0;
+        }
+
+        /*
         #horizontal_container {
+            margin-top: 0;
             display: grid;
             grid-template-columns: 150px 1fr;
         }
+        */
+
+        @media all and (max-width: 480px) {
+            #horizontal_container {
+                margin-top: 0;
+                display: grid;
+                grid-template-columns: 150px 1fr;
+                background-color: lightgray;
+            }
+
+            ol {
+                border-right: 5px solid black;
+            }
+        }
+
+
     </style>
 </head>
 <body>
