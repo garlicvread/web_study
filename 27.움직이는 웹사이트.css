@@ -1,0 +1,70 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 960px;
+    margin: 100px auto;
+    background-color: #efeff6;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+}
+
+/* 아래의 빈 칸들을 지시사항에 따라 채워 주세요*/
+
+.target-box {
+    /*
+    .target-box selector on hover
+        - After a delay of 0.5 seconds,
+        - for 3 seconds,
+        - In a timing-function way of ease,
+        - The background color is greenyellow -> green,
+        - Width is 200px -> 400px ,
+        - The height is 200px -> 400px.
+    will change.
+    */
+
+    background-color: greenyellow;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    padding-top: 50px;
+
+    transition-property: background-color, width, height;
+    transition-duration: 3s;
+    transition-timing-function: ease, ease, ease;
+    transition-delay: 0.5s;
+
+    /*
+    .target-box selectors are animated by slide-left-to-right
+        - at 5 second intervals (duration),
+        - Repeated infinite times,
+        - alternately on both sides,
+        - margin-left from 0% to 90%
+    will change.
+    */
+
+    animation-name: slide-left-to-right;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.target-box:hover {
+    background-color: green;
+    width: 400px;
+    height: 400px;
+}
+
+@keyframes slide-left-to-right {
+    from {
+        margin-left: 0%;
+    }
+
+    to {
+        margin-left: 90%;
+    }
+}
