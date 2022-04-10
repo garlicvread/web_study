@@ -1,0 +1,23 @@
+/*
+The class "changeBox" is 100px big for its width and height.
+
+For the class "changeBox", the transitions are:
+    - the duration of trasition: 0.5s
+    - the delay of trasition: 1s
+    - the basic background color: #532fa1.
+    - When hover, the background color: #a44789.
+*/
+
+.changeBox {
+    width: 100px;
+    height: 100px;
+    background-color: #532fa1;
+
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    transition-delay: 1s;
+}
+
+.changeBox:hover {
+    background-color: #a44789;
+}
