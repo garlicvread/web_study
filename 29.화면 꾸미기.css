@@ -1,0 +1,40 @@
+/*
+<h2></h2> 태그:
+  - 글씨 크기: 80px
+  - 글씨 굵기: bold
+  - 글씨 색: white
+  - 배경 색: blue
+*/
+
+.header {
+    font-size: 80px;
+    font-weight: bold;
+    color: white;
+    background-color: blue;
+}
+
+/*
+<p></p> 태그:
+  - 글씨 크기: 20px
+  - 글씨 스타일: italic
+  - 글씨 색: green
+*/
+
+.paragraph {
+    font-size: 20px;
+    font-style: italic;
+    color: green;
+}
+
+/*
+<li></li> 태그:
+  - 글씨 크기: 50px
+  - 글씨 폰트: Arial, sans-serif
+  - 글씨 색: red
+*/
+
+.list {
+    font-size: 50px;
+    font-family: Arial, sans-serif;
+    color: red;
+}
