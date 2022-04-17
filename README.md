@@ -1,1 +1,1 @@
-# elice_sw2_html, css
+# elice_sw2_html, css, JS
