@@ -1,0 +1,29 @@
+.watermelon {
+    width: 500px;
+    height: 500px;
+    background-color: green;
+    transition: all 0.3s;
+}
+
+.watermelon:hover {
+    transition: border-radius 0.3s;
+    border-radius: 50%;
+}
+
+/*
+When 100px <= width of the screen <= 500px,
+change the properties of .watermelon as:
+    width: 300px;
+    height: 300px;
+    background-color: red;
+    border: solid 10px green;
+*/
+
+@media (min-width: 100px) and (max-width: 500px) {
+    .watermelon {
+        width: 300px;
+        height: 300px;
+        background-color: red;
+        border: solid 10px green;
+    }
+}

@@ -1,0 +1,116 @@
+/* 아래 코드는 문제 해결을 위해 기본적으로 제공되는 코드입니다. 수정하지 마세요! */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+img {
+    width: 100%;
+}
+
+.container .header {
+    height: 100px;
+    line-height: 100px;
+}
+
+#main article {
+    float: left;
+    width: 25%;
+    height: 200px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+#main article.first_article {
+    background-color: #fbfbfb;
+}
+
+#main article.second_article {
+    background-color: #efeff6;
+}
+
+#main article.third_article {
+    background-color: #dcdcec;
+}
+
+#main article.fourth_article {
+    background-color: #cbcae3;
+}
+
+.footer {
+    padding-top: 15px;
+    text-align: center;
+    clear: both;
+    width: 100%;
+}
+
+
+/*
+When in the media query range:
+*/
+@media (min-width: 320px) and (max-width: 1000px) {
+    /*The width of the class "container": 640px*/
+    .container {
+        width: 640px;
+    }
+
+    /*The width of the tag "img": 90%*/
+    img {
+        width: 90%;
+    }
+
+    /*Tag "article" under id "main": width 50%, text center align*/
+    #main article {
+        width: 50%;
+        text-align: center;
+    }
+
+    /*The class "header": center aligned, width: 50%*/
+    .header {
+        text-align: center;
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    /*The background color of tag "article" and the class "first_article" under id main: #cbcae3*/
+    #main article.first_article {
+        background-color: #cbcae3;
+    }
+
+    /*The background color of tag "article" and the class "second_article" under id main: #dcdcec*/
+    #main article.second_article {
+        background-color: #dcdcec;
+    }
+
+    /*The background color of tag "article" and the class "third_article" under id main: #efeff6*/
+    #main article.third_article {
+        background-color: #efeff6;
+    }
+
+    /*The background color of tag "article" and the class "fourth_article" under id main: #fbfbfb*/
+    #main article.fourth_article {
+        background-color: #fbfbfb;
+    }
+
+    /*Alternative Solution:*/
+    /*#main article:nth-child(1) {*/
+    /*    background-color: #cbcae3;*/
+    /*}*/
+
+    /*#main article:nth-child(2) {*/
+    /*    background-color: #dcdcec;*/
+    /*}*/
+
+    /*#main article:nth-child(3) {*/
+    /*    background-color: #efeff6;*/
+    /*}*/
+
+    /*#main article:nth-child(4) {*/
+    /*    background-color: #fbfbfb;*/
+    /*}*/
+}

@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.map {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    transition: background-color 1.5s;
+}
+
+/*
+Generate a media query for min-width: 360px and max-width: 720px
+
+When in the media query range,
+- the map background color: blue
+- transition effect: background-color, 1.5s
+- The map hover effect: change the background color to orange
+*/
+
+@media (min-width: 360px) and (max-width: 720px) {
+    .map {
+        background-color: blue;
+        /*
+        transition: background-color 1.5s;  <-- 주석 처리
+        여기에 transition 효과를 주는 경우 화면 사이즈를 줄일 때 transition 효과가 나타나지 않는다.
+        그래서 저 위쪽 .map {...} 에서 transition 효과를 주는 것이다.
+        */
+    }
+
+    .map:hover {
+        background-color: orange;
+    }
+}
