@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Syntax</title>
+
+    <style>
+        li {
+            color: red;
+        }
+
+        .italic_font {
+            font-style: italic;
+            color: blue;
+        }
+
+        #target_font {
+            font-size: 100px;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="italic_font" style="text-decoration: underline;">CSS Basic Syntax</h1>
+
+    <ul>
+        <li style="text-decoration: underline;">item</li>
+        <li class="italic_font">item</li>
+        <li id="target_font">item</li>
+    </ul>
+
+    <script>
+        document.write(2+7);
+        document.write("<br>");
+        document.write(2-7);
+        document.write("<br>");
+        document.write(2*7);
+        document.write("<br>");
+        document.write(2/7);
+        document.write("<br>");
+        document.write(Math.random());
+        document.write("<br>");
+        document.write(Math.PI);
+        document.write("<br>");
+        document.write(Math.pow(2,7));
+    </script>
+
+    <script>
+        document.write('Hello World <br>');
+        document.write("This is \
+            a string <br>");
+        console.log("This is \
+            a string");
+        document.write(`This is how to change
+            the line with a backtick<br>`);
+        console.log(`This is how to change
+the line with a backtick`);
+        console.log(`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda consequuntur delectus dolorem dolorum esse, eum explicabo facilis fugit minus, modi optio perferendis possimus rem repellendus sapiente sed vero voluptates! Accusantium adipisci aspernatur dignissimos dolore ea excepturi impedit laboriosam minus pariatur porro quasi, qui quibusdam rem sint soluta temporibus vel? Accusantium culpa distinctio earum numquam quae quod repudiandae. Consequatur in incidunt magni possimus praesentium. A aliquam amet commodi dicta dolor eius eligendi et eum, explicabo facere fugit id laudantium libero magni molestias nemo nostrum placeat porro quas quasi recusandae sapiente sint soluta totam ullam voluptates voluptatibus! Consequatur debitis dolorum suscipit?`.length);
+
+    </script>
+
+    <!-- Event Programming -->
+    <h1>Event</h1>
+
+    <!-- When clicked, the alert window will appear. -->
+    <!-- Call speechSynthesis API -->
+    <!-- speechSynthesis.speak(msg); new SpeechSynthesisUtterance(msg) -->
+    <input type="button" value="Click!" onclick="speechSynthesis.speak(new SpeechSynthesisUtterance('Hello there!'));
+    alert('Hello there!');
+    ">
+</body>
+</html>

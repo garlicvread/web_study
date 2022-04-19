@@ -61,7 +61,7 @@
 
 @keyframes slide-left-to-right {
     from {
-        margin-left: 0%;
+        margin-left: 0;
     }
 
     to {
