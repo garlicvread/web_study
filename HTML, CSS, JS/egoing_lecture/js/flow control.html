@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Flow Control</title>
+    <script src="flow control.js"></script>
 </head>
 
 <body>
@@ -20,5 +21,38 @@
         console.log(1 < 2);
         console.log(1 > 2);
     </script>
+
+    <h1>Login Function</h1>
+
+    <script>
+        console.log(this);
+        // this: the whole window object.
+        // the value of this is determined by the context of the function.
+        // For example, in console.log(this), this refers to the entire window object,
+        // but "this" refers to the button when it is used in <input type="button" onclick="console.log(this);">.
+    </script>
+
+<!--    <script>-->
+<!--        let input_id = prompt('id?');-->
+<!--        let id = 'garlicvread';-->
+
+<!--        if (id === input_id) {-->
+<!--            alert('Hello, ' + input_id);-->
+<!--        } else {-->
+<!--            alert('Who the fuck are you?');-->
+<!--        }-->
+<!--    </script>-->
+
+    <input type="button" value="Day" onclick="
+        if (this.value === 'Day') {
+            this.value = 'Night';
+            document.querySelector('body').style.backgroundColor = 'black';
+            document.querySelector('body').style.color = 'white';
+        } else {
+            this.value = 'Day';
+            document.querySelector('body').style.backgroundColor = 'white';
+            document.querySelector('body').style.color = 'black';
+        }
+    ">
 </body>
 </html>
