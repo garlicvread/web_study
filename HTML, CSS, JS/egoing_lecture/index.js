@@ -44,5 +44,4 @@ function changeColor() {
 
         count = 0;
     }
-}
-
+};
