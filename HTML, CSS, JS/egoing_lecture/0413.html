@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>0413</title>
+</head>
+
+<body>
+    <!-- When clicked, change the background color as dark, font color as white. -->
+    <input type="button" value="Night" onclick="
+        if (this.value === 'Night') { // if the value of the button in the input tag is 'Night'
+            document.querySelector('body').style.backgroundColor='black';
+            document.querySelector('body').style.color='white';
+            // Change the text in the button to 'Day'
+            this.value='Day';
+        } else {
+            document.querySelector('body').style.backgroundColor='white';
+            document.querySelector('body').style.color='black';
+            // Change the text in the button to 'Night'
+            this.value='Night';
+        }
+    ">
+
+    <h1>
+        <a href="0413.html">Web</a>
+    </h1>
+
+    <ol>
+        <li><a href="0413_1.html">HTML</a></li>
+        <li><a href="0413_2.html">CSS</a></li>
+        <li><a href="0413_3.html">JS</a></li>
+    </ol>
+
+    <h2>Welcome</h2>
+    Hello, Web!
+</body>
+</html>

@@ -24,6 +24,66 @@
         console.log(scores[2]);
         console.log(contents.push('Raymond'));
         console.log(contents);
+
+        for (let i = 0; i < members.length; i++) {
+            console.log(members[i]);
+        }
     </script>
+
+    <h1>Loop</h1>
+    <script>
+        console.log(1);
+        for (let i = 0; i < 3; i++) {
+            console.log(2);
+            console.log(3);
+        }
+        console.log(5);
+    </script>
+
+    <h1>Array + Loop</h1>
+    <script>
+        // From the array 'arr', put each element into <li> tag using for loop.
+        let arr = ['garlicvread', 'seungtae', 'sangrock', 'jihye'];
+
+        for (let i = 0; i < arr.length; i++) {
+            // Print 'arr i' + arr[i] to the console.
+            console.log('arr ' + i + ': ' + arr[i] + '\n');
+            document.write('Print arr[i] to the display: ' + arr[i] + '<br>');
+            document.write('"document.write: "' + '<li>' + arr[i] + '</li>' + '<br>');
+
+            // The same code as above using template literal.
+            document.write(`<li>Using template literal: ${arr[i]}<br></li>`);
+
+            // Create a <li> tag and put arr[i] to the <li> tag.
+            let li = document.createElement('li'); // Create a <li> tag.
+
+            li.innerText = arr[i]; // Put arr[i] to the <li> tag.
+
+            document.body.appendChild(li);
+            // Append the <li> tag to the body.
+            // document.body.appendChild(li) adds the <li> tag to the body,
+            // so when the HTML is loaded, the <li> tag is also added to the body thus they are displayed.
+
+            // Add 2 lines to distinguish each <li> tag.
+            document.write('<br>');
+            document.write('<br>');
+        }
+    </script>
+
+    <h1>Array + Loop 2</h1>
+    <ul></ul>
+        <script>
+            let tag = '';
+            let contents2 = ['HTML', 'CSS', 'JS'];
+
+            for (let i = 0; i < contents2.length; i++) {
+                tag += `<li> ${contents2[i]} </li>`;
+            }
+            document.querySelector('ul').innerHTML = tag;
+
+            // Print the contents of new tag to the console.
+            document.write(tag);
+
+        </script>
 </body>
 </html>
