@@ -59,21 +59,21 @@
 
 // Function changeColor() alternative 2 ==> function separated.
 function night() {
-    // document.querySelector('body').style.backgroundColor = 'black';
-    // document.querySelector('body').style.color = 'white';
+    document.querySelector('body').style.backgroundColor = 'black';
+    document.querySelector('body').style.color = 'white';
 
     // $('body').css('background-color', 'black'); // jQuery alternatives 1.
     // $('body').css('color', 'white');
 
-    $('body').css('background-color', 'black').css('color', 'white') // jQuery alternatives 2.
+    // $('body').css('background-color', 'black').css('color', 'white') // jQuery alternatives 2.
 
-    // let aList = document.querySelectorAll('a');
-    //
-    // for (let i = 0; i < aList.length; i++) {
-    //     aList[i].style.color = 'Yellow';
-    // }
+    let aList = document.querySelectorAll('a');
 
-    $('a').css('color', 'Yellow'); // jQuery alternative for above four lines.
+    for (let i = 0; i < aList.length; i++) {
+        aList[i].style.color = 'Yellow';
+    }
+
+    // $('a').css('color', 'Yellow'); // jQuery alternative for above four lines.
 
     document.querySelector('#colorBtn').value = 'Day';
 }
