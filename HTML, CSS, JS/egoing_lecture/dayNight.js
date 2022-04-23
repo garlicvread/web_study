@@ -91,7 +91,7 @@ function day() {
 
 
 // Combine the two functions night() and day() into one function.
-function dayNight() {
+export function dayNight() {
     if (this.value === 'Night') { // this.value means that the value of the <input> tag.
         night();
         this.value = 'Day';
