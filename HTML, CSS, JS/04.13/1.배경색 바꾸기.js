@@ -7,17 +7,17 @@ let blockThree = document.getElementById("green");
 // <div id="yellow">yellow</div>
 // <div id="green">green</div>
 
-blockOne.addEventListener("mouseenter", function () {
-    blockOne.classList.add("red");
-    blockOne.classList.add('cursor')
+blockOne.addEventListener("mouseenter", function (e) {
+    e.currentTarget.classList.add("red");
+    e.currentTarget.classList.add('cursor')
 })
 
-blockTwo.addEventListener("mouseenter", function () {
-    blockTwo.classList.add("yellow");
+blockTwo.addEventListener("mouseenter", function (e) {
+    e.currentTarget.classList.add("yellow");
 });
 
-blockThree.addEventListener("mouseenter", function () {
-    blockThree.classList.add("green");
+blockThree.addEventListener("mouseenter", function (e) {
+    e.currentTarget.classList.add("green");
 });
 
 
