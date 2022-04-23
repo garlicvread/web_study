@@ -59,15 +59,23 @@
 
 // Function changeColor() alternative 2 ==> function separated.
 function night() {
-    document.querySelector('body').style.backgroundColor = 'black';
-    document.querySelector('body').style.color = 'white';
+    // document.querySelector('body').style.backgroundColor = 'black';
+    // document.querySelector('body').style.color = 'white';
 
-    let aList = document.querySelectorAll('a');
+    // $('body').css('background-color', 'black'); // jQuery alternatives 1.
+    // $('body').css('color', 'white');
 
-    for (let i = 0; i < aList.length; i++) {
-        aList[i].style.color = 'Yellow';
-    }
-    document.querySelector('input').value = 'Day';
+    $('body').css('background-color', 'black').css('color', 'white') // jQuery alternatives 2.
+
+    // let aList = document.querySelectorAll('a');
+    //
+    // for (let i = 0; i < aList.length; i++) {
+    //     aList[i].style.color = 'Yellow';
+    // }
+
+    $('a').css('color', 'Yellow'); // jQuery alternative for above four lines.
+
+    document.querySelector('#colorBtn').value = 'Day';
 }
 
 function day() {
@@ -78,13 +86,13 @@ function day() {
     for (let i = 0; i < aList.length; i++) {
         aList[i].style.color = 'blue';
     }
-    document.querySelector('input').value = 'Night';
+    document.querySelector('#colorBtn').value = 'Night';
 }
 
 
 // Combine the two functions night() and day() into one function.
 function dayNight() {
-    if (this.value === 'Night') {
+    if (this.value === 'Night') { // this.value means that the value of the <input> tag.
         night();
         this.value = 'Day';
     } else {
