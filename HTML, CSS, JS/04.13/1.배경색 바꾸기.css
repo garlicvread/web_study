@@ -1,0 +1,24 @@
+div {
+  background-color: #ccc;
+    text-align: center;
+    height: 120px;
+    line-height: 120px;
+}
+
+/*The animation should be smooth, so the color changes gradually.*/
+/*The animation speed should be 0.5 seconds.*/
+.red {
+    background-color: red;
+    transition: background-color 0.5s;
+    cursor: pointer;
+}
+
+.green {
+    background-color: lightgreen;
+    transition: background-color 0.5s;
+}
+
+.yellow {
+    background-color: gold;
+    transition: background-color 0.5s;
+}
