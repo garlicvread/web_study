@@ -5,8 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Garlicvread's Home</title>
-    <script src="dayNight.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!--    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>-->
+    <link rel="stylesheet" href="index.css">
+
+    <script type="module">
+        import {dayNight} from "./dayNight.js";
+        function listener() {
+            dayNight();
+        }
+        document.querySelector('#colorBtn').addEventListener('click', dayNight);
+        console.log(dayNight);
+        // debugger;
+    </script>
 </head>
 <body>
 <!--    jQuery toggle button.-->
@@ -28,7 +38,8 @@
     <input id="colorBtn"
            type="button"
            value="Night"
-           onclick="dayNight()">
+           > <!-- When clicked, the function dayNight() from dayNight.js is called.-->
+
 
 <!--    <input type="button" value="Night"-->
 <!--           onclick="-->
