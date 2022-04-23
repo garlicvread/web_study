@@ -14,7 +14,8 @@ function attend() {
 
     // Stack the value of the input into the attendee.
     // Initiate the list of attendees.
-    attendee.innerHTML += `${inputName.value}<br>`;
+    // attendee.innerHTML += `${inputName.value}<br>`; // variation 1
+    attendee.innerHTML += `<p>${inputName.value}</p>`; // variation 2
 }
 
 target.addEventListener("click", attend); // When the target is clicked, call the attend() function.
