@@ -17,9 +17,9 @@ form.addEventListener("submit", function (e) {
     let outputData = "";
 
     if (probability >= 50) {
-        answer.textContent = "우산을 챙긴다.";
+        outputData = "우산을 챙긴다.";
     } else {
-        answer.textContent = "그냥 간다.";
+        outputData = "그냥 간다.";
     }
 
     answer.innerHTML = outputData;

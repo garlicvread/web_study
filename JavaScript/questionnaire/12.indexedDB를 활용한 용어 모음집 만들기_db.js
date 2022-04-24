@@ -1,3 +1,5 @@
+const onRequest = indexedDB.open('programming', 1)
+
 // addEntryToDb 함수를 작성합니다.
 const addEntryToDb = (storeName, entry) => {
     const database = onRequest.result
