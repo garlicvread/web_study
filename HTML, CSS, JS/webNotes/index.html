@@ -15,43 +15,22 @@
     <body>
         <h1><a href="index.html" onclick="
             event.preventDefault();
-            document.querySelector('article').innerHTML = `<h2>Welcome</h2>Hello, WEB!`;    
+            document.querySelector('article').innerHTML = `<h2>Welcome</h2>Hello, WEB!`;
+            // When click the link, the article will be changed to display the welcome message.
         ">WEB</a></h1>
+
         <nav>
             <ol></ol>
         </nav>
+
         <article>
             <h2>Welcome</h2>
             Hello, WEB
         </article>
 
         <script>
-            /*
-            function nav(){}
-            let nav = function(){}
-            */
-            let nav = () => {
-                let navTag = ''; // A tag to append li tags dynamically.
-                for(let i = 0; i < topics.length; i++){
-                    navTag = navTag + `
-                        <li>
-                            <a href="/read/${topics[i].id}" id="${topics[i].id}" onclick="
-                                event.preventDefault();
-                                for(let i = 0; i < topics.length; i++){
-                                    if(topics[i].id === Number(event.target.id)){
-                                        document.querySelector('article').innerHTML = '<h2>${topics[i].title}</h2>${topics[i].body}';
-                                        break;
-                                    }
-                                }
-                            ">
-                                ${topics[i].title}
-                            </a>
-                        </li>`;
-                }
-                document.querySelector('nav ol').innerHTML = navTag;
-                console.log(navTag);
-            }
             nav();
         </script>
+
     </body>
 </html>
