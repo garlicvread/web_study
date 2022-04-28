@@ -37,3 +37,10 @@ function flatten(arr) {
 }
 
 document.write(flatten(given_arr));
+
+
+function reduce_arr(arr) {
+    return arr.reduce((acc, cur) => {
+        return acc.concat(Array.isArray(cur) ? reduce_arr(cur) : cur);
+    }, []);
+}
