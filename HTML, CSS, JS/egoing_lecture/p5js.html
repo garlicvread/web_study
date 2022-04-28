@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>P5.JS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
+</head>
+
+<body>
+    <h1>WEB</h1>
+    <style>
+        h1 {
+            font-size: 100px;
+        }
+
+
+        main {
+            position: absolute;
+            top:0;
+            left:0;
+
+            /*z-index: -1: 배경이 덮어씌워지는 것을 방지*/
+            z-index: -1;
+        }
+    </style>
+    <script>
+        function setup() {
+            console.log('setup');
+            createCanvas(windowWidth, windowHeight);
+            // background(0);
+            // circle(100, 100, 100);
+            // circle(200, 200, 50);
+        }
+
+        function draw() {
+            console.log('draw');
+            noStroke(); // 선을 없애준다.
+            fill(100, 10); // 채우기. alpha: 투명도
+
+            // 마우스 커서를 따라 원이 이동: 좌표를 mouseX, mouseY로 지정
+            // 원 크기 랜덤 지정: random(100) 또는 random() * 100
+            // circle(mouseX, mouseY, random(100));
+            circle(mouseX, mouseY, random() * 50);
+        }
+    </script>
+
+</body>
+</html>
