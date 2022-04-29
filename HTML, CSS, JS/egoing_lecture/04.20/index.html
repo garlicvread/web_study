@@ -9,8 +9,10 @@
         <h1>
             <a href="/" onclick="
                 event.preventDefault();
-                welcome();">WEB
-            </a>
+                welcome();
+                selectedId = null; // 선택된 게시물의 id를 초기화
+                control(); // control() 함수를 실행하여 게시물을 출력
+            ">WEB</a>
         </h1>
     </header>
 
@@ -22,6 +24,9 @@
             </li>
             <li>
                 <a href="/read/2">CSS</a>
+            </li>
+            <li>
+                <a href="/read/3">JavaScript</a>
             </li>
             -->
         </ol>
@@ -139,18 +144,34 @@
             const content = `<h2>${topic.title}</h2>${topic.body}`; // 4.
 
             document.querySelector('article').innerHTML = content;
+
+            control(); //
         }
         function create() {}
         function update() {}
 
         // welcome, read, create, update 를 동적으로 렌더링하기 위한 함수 작성
-        function control() {}
+        function control() {
+            let contextUI = '' // 조건을 담기 위한 변수.
+            // topic, 즉 selectedId가 존재하는 경우에만 Update, Delete를 띄우기 위한 것.
+            if (selectedId !== null) {
+                contextUI = `
+                    <li><a href="/update">Update</a></li>
+                    <li><a href="/delete">Delete</a></li>
+                `;
+            }
+            document.querySelector('#control').innerHTML = `
+                <li><a href="/create">Create</a></li>
+                ${contextUI}
+            `;
+        }
 
         // delete 기능 구현을 위한 함수 작성
         function del() {}
 
         nav(); // navigation renderer 호출: nav() 함수는 처음부터 로딩돼야 하기 때문.
-        welcome(); //
+        welcome();
+        control();
     </script>
 </body>
 </html>
