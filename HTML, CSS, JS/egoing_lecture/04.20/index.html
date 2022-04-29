@@ -60,6 +60,7 @@
             {id: 3, title: 'JavaScript', body: 'JavaScript is ...'}
             // {id: 3, title: 'JavaScript', description: 'JavaScript is ...'}
         ];
+        let nextId = 4; // 게시물의 id를 생성하기 위한 변수
         let selectedId = null;
 
         // navHandler() 함수의 기능:
@@ -116,8 +117,10 @@
         }
 
         // welcome, read, create, update 기능 구현을 위한 함수 작성
-        function welcome() {
+        function welcome(e) {
             document.querySelector('article').innerHTML = `<h2>Welcome</h2>Hello, WEB!`;
+            selectedId = null;
+            control();
         }
 
         // 3. 아이디와 일치하는 topics의 원소 찾기 --> read() {} 함수에서 처리
@@ -145,15 +148,57 @@
 
             document.querySelector('article').innerHTML = content;
 
-            control(); //
+            control();
         }
-        function create() {}
+
+        // 제목 및 본문 표시
+        // function create() {} 함수의 onsubmit에서 호출해서 사용한다(코드가 복잡해져서 분리).
+        // onsubmit="createHandler(event)" 의 event 객체를 e라는 parameter로 받는다.
+        // <form> 태그의 default behavior는 클릭시 다른 페이지로 이동이다.
+        // 이 기본 기능을 무효화할 필요가 있다.
+        function createHandler(e) {
+            e.preventDefault();
+
+            // e.target은 <form> 태그를 기리킨다.
+            // e.target.title은 <form> 태그 내부의 name이 target인 태그를 가리키며
+            // e.target.title.value는 <form> 태그 내부의 name이 target인 태그의 값을 가리킨다.
+            const t = e.target.title.value;
+            const b = e.target.body.value;
+            console.log(t);
+            console.log(b);
+
+            // t와 b의 값을 topics에 push한다.
+            const newTopic = {id: nextId, title: t, body: b};
+            topics.push(newTopic);
+            nav();
+            selectedId = nextId;
+            nextId = nextId + 1;
+            read(); // 상세보기 호출. read() 함수는 selectedId가 반드시 필요하므로 nextId 값을 selectedId에 할당.
+            // 근데 이렇게 하면 나중에 유지보수가 귀찮아지기 때문에 사실은 read()에서 id 값을 직접 받는 게 훨씬 낫다.
+        }
+
+        // 글쓰기 기능. Create를 눌렀을 때: event 발생; submit에 event를 추가해도 되지만 onsubmit으로 이벤트 발생시키면 더 간편함.
+        // onsubmit 이벤트는 form 태그에서만 사용할 수 있음.
+        // 1. topics에 새 글(topic) 추가
+        // 2. navigation 갱신: nav() 함수 호출하면 된다.
+        // 3. 작성한 글을 보여주는 페이지로 전환: selectedId 변경 및 read() 호출
+        function create() {
+            const content = `
+                <form onsubmit="createHandler(event);">
+                    <p><input type="text" name="title" placeholder="제목"></p>
+                    <p><textarea name="body" placeholder="본문"></textarea></p>
+                    <p><input type="submit" value="create"></p>
+                </form>
+            `;
+            document.querySelector('article').innerHTML = content;
+        }
         function update() {}
 
         // welcome, read, create, update 를 동적으로 렌더링하기 위한 함수 작성
         function control() {
             let contextUI = '' // 조건을 담기 위한 변수.
             // topic, 즉 selectedId가 존재하는 경우에만 Update, Delete를 띄우기 위한 것.
+
             if (selectedId !== null) {
                 contextUI = `
                     <li><a href="/update">Update</a></li>
@@ -161,7 +206,10 @@
                 `;
             }
             document.querySelector('#control').innerHTML = `
-                <li><a href="/create">Create</a></li>
+                <li><a href="/create" onclick="
+                    event.preventDefault(); // Create 항목 클릭시 기본 동작 정지
+                    create();
+                ">Create</a></li>
                 ${contextUI}
             `;
         }
