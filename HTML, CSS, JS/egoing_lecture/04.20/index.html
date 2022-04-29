@@ -7,7 +7,10 @@
 <body>
     <header>
         <h1>
-            <a href="/">WEB</a>
+            <a href="/" onclick="
+                event.preventDefault();
+                welcome();">WEB
+            </a>
         </h1>
     </header>
 
@@ -108,7 +111,9 @@
         }
 
         // welcome, read, create, update 기능 구현을 위한 함수 작성
-        function welcome() {}
+        function welcome() {
+            document.querySelector('article').innerHTML = `<h2>Welcome</h2>Hello, WEB!`;
+        }
 
         // 3. 아이디와 일치하는 topics의 원소 찾기 --> read() {} 함수에서 처리
         // 4. 본문 생성 --> read() {} 함수에서 처리
@@ -144,7 +149,8 @@
         // delete 기능 구현을 위한 함수 작성
         function del() {}
 
-        nav() // navigation renderer 호출: nav() 함수는 처음부터 로딩돼야 하기 때문.
+        nav(); // navigation renderer 호출: nav() 함수는 처음부터 로딩돼야 하기 때문.
+        welcome(); //
     </script>
 </body>
 </html>
