@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="/" onclick="
+                event.preventDefault();
+                welcome();
+                selectedId = null; // 선택된 게시물의 id를 초기화
+                control(); // control() 함수를 실행하여 게시물을 출력
+            ">WEB</a>
+        </h1>
+    </header>
+
+    <nav>
+        <ol>
+            <!-- TODO: 주석 처리한 부분을 동적으로 바꾸는 함수 작성: React 스타일(실제 React는 아님)
+            <li>
+               <a href="/read/1">HTML</a>
+            </li>
+            <li>
+                <a href="/read/2">CSS</a>
+            </li>
+            <li>
+                <a href="/read/3">JavaScript</a>
+            </li>
+            -->
+        </ol>
+    </nav>
+
+    <article>
+        <!-- TODO: 주석 처리한 부분을 동적으로 바꾸는 함수 작성: React 스타일(실제 React는 아님)
+        <h2>Welcome</h2>
+        Hello, Web!
+        -->
+    </article>
+
+    <ol id="control">
+        <!-- TODO: qjt주석 처리한 부분을 동적으로 바꾸는 함수 작성: React 스타일(실제 React는 아님)
+        <li>
+            <a href="/create">Create</a>
+        </li>
+        <li>
+            <a href="/update">Update</a>
+        </li>
+        <li>
+            <a href="/delete">Delete</a>
+        </li>
+        -->
+    </ol>
+
+    <script>
+        const topics = [ // const: 재할당을 막기 위한 것. push()로 변경할 수 있다.
+            {id: 1, title: 'HTML', body: 'HTML is ...'},
+            {id: 2, title: 'CSS', body: 'CSS is ...'},
+            {id: 3, title: 'JavaScript', body: 'JavaScript is ...'}
+            // {id: 3, title: 'JavaScript', description: 'JavaScript is ...'}
+        ];
+        let nextId = 4; // 게시물의 id를 생성하기 위한 변수
+        let selectedId = null;
+
+        // navHandler() 함수의 기능:
+        // 1. 링크의 작동 중지: event.preventDefault(). 기본 기능을 막아야 함.
+        // 2. 아이디 값 알아냄: id="${e.id}" 속성으로 아이디 값을 주고, 그 아이디 값을 가져옴.
+        //    함수 바깥이면 this를 사용하면 되지만 지금 함수 안에서 작업하므로 this를 사용할 수 없다. 이를 위해서는 자기 자신을 가리키는 변수를 선언해야 한다.
+        //    여기서는 e.target.id; 를 사용하여 당해 아이디 값을 가져온다. 이 값을 전역변수인 selectedId에 저장한다.
+        // 3. 아이디와 일치하는 topics의 원소 찾기 --> read() {} 함수에서 처리
+        // 4. 본문 생성 --> read() {} 함수에서 처리
+        // 5. 본문 출력 --> read() {} 함수에서 처리
+        function navHandler(e) {
+            // e: function nav()애서 사용되는 콜백 함수인 navHandler(event)의 event에 전달될 값.
+
+            e.preventDefault(); // 1.
+            selectedId = Number(e.target.id); // 2. selectedId는 전역변수로 선언함. 매우 중요하게 사용되는 변수이기 때문.
+            // console.log(typeof selectedId); // string
+            // selectedId를 실시간으로 확인하고 싶으면 개발자 도구에서 눈 모양 아이콘을 누르고 Expression 창에 selectedId를 입력한다.
+            // 링크를 눌러 보면 실시간으로 selectedId 값이 변화하는 것을 확인할 수 있다.
+            // topics의 id는 숫자이지만 e.target.id의 데이터는 string이므로 미리미리 숫자로 형변환한다.
+
+            read();
+        }
+
+        // topics를 이용하여 <li> 태그 항목을 만들어 주는 navigation renderer를 작성: function nav()
+        function nav() {
+            // const tag = topics.map(function(e) {
+            // const tag = topics.map((e) => { // 바로 윗줄의 const tag = topics.map(function(e) { 와 같은 의미
+            //     // (e) => {}와 같이 인자가 하나인 경우 괄호 생략이 가능하다. 즉, e => {}로 쓸 수 있음.
+            //
+            //     // onClick="navHandler();": onClick시 실행될 함수.
+            //     // navHandler(event) 의 event는 이벤트(이벤트값)를 말함.
+            //     // 본체인 return 부분에 return값밖에 없는 경우 return과 중괄호를 생략할 수 있다.
+            //     // 즉, return `<li>${e.title}</li>`; 와 같이 쓸 수 있다.
+            //     // onClick 내부에서의 this == event.target이나 마찬가지이다.
+            //     return `<li><a href="/read/${e.id}" id="${e.id}" onClick="navHandler(event);">${e.title}</a></li>`;
+            // }).join('');
+
+            // 위 코드블럭과 같은 더 축약된 애로우 펑션
+            const tag = topics.map(e => `
+                <li>
+                    <a href="/read/${e.id}" id="${e.id}" onclick="navHandler(event);">
+                        ${e.title}
+                    </a>
+                </li>`).join('');
+
+            // console.log('tag', tag);
+            // map()은 함수를 인자로 받을 수 있음. 인자로 받은 함수는 각 항목을 순회하며 실행한다.
+            // 각 순번에 해당하는 파라미터를 첫 번째 인자로 받는다. 즉, nav() 함수는 topics 배열의 각 항목을 복제하고,
+            // 복제한 항목을 순차적으로 콜백 함수에 입력함. 이때 return한 값이 복제된 배열의 원소로 replace 된다.
+
+            document.querySelector('nav>ol').innerHTML = tag;
+            // nav>ol은 nav 태그의 자식 ol 태그의 innerHTML을 가리킨다.
+            // 여기에 tag를 삽입하면 <li>HTML</li><li>CSS</li>, 즉 글 목록이 생성된다.
+        }
+
+        // welcome, read, create, update 기능 구현을 위한 함수 작성
+        function welcome(e) {
+            document.querySelector('article').innerHTML = `<h2>Welcome</h2>Hello, WEB!`;
+            selectedId = null;
+            control();
+        }
+
+        // 3. 아이디와 일치하는 topics의 원소 찾기 --> read() {} 함수에서 처리
+        // 4. 본문 생성 --> read() {} 함수에서 처리
+        // 5. 본문 출력 --> read() {} 함수에서 처리
+        function read() {
+            // filter 함수의 콜백 함수는 리턴값이 true인 원소만 배열로 담아 반환함.
+            // filter 함수는 map() 함수와 똑같이 생겼다. 따라서 원수를 파라미터로 받는 콜백 함수를 정의해야 함.
+
+            // 예컨대 topics.filter(function(e) {
+            //          if (e.id == 1) {
+            //              return true;
+            //          } else {
+            //              return false;
+            //          }
+            //      }); 와 같이 콘솔창에 입력하면 필터를 거친 리턴값은
+            //      0: {id: 1, title: 'HTML', description: 'HTML is ...'}
+            //      length: 1 와 같이 나타난다.
+
+            // 이 함수를 애로우 펑션으로 바꾸면: topics.filter(e => e.id > 1); 가 된다. 뭐 사실 애로우 펑션은 몰라도 되긴 함..
+            const topic = topics.filter(e => e.id === selectedId)[0]; // 3.
+            console.log('topic', topic);
+
+            const content = `<h2>${topic.title}</h2>${topic.body}`; // 4.
+
+            document.querySelector('article').innerHTML = content;
+
+            control();
+        }
+
+        // 제목 및 본문 표시
+        // function create() {} 함수의 onsubmit에서 호출해서 사용한다(코드가 복잡해져서 분리).
+        // onsubmit="createHandler(event)" 의 event 객체를 e라는 parameter로 받는다.
+        // <form> 태그의 default behavior는 클릭시 다른 페이지로 이동이다.
+        // 이 기본 기능을 무효화할 필요가 있다.
+        function createHandler(e) {
+            e.preventDefault();
+
+            // e.target은 <form> 태그를 기리킨다.
+            // e.target.title은 <form> 태그 내부의 name이 target인 태그를 가리키며
+            // e.target.title.value는 <form> 태그 내부의 name이 target인 태그의 값을 가리킨다.
+            const t = e.target.title.value;
+            const b = e.target.body.value;
+            console.log(t);
+            console.log(b);
+
+            // t와 b의 값을 topics에 push한다.
+            const newTopic = {id: nextId, title: t, body: b};
+            topics.push(newTopic);
+            nav();
+            selectedId = nextId;
+            nextId = nextId + 1;
+            read(); // 상세보기 호출. read() 함수는 selectedId가 반드시 필요하므로 nextId 값을 selectedId에 할당.
+            // 근데 이렇게 하면 나중에 유지보수가 귀찮아지기 때문에 사실은 read()에서 id 값을 직접 받는 게 훨씬 낫다.
+        }
+
+        // 글쓰기 기능. Create를 눌렀을 때: event 발생; submit에 event를 추가해도 되지만 onsubmit으로 이벤트 발생시키면 더 간편함.
+        // onsubmit 이벤트는 form 태그에서만 사용할 수 있음.
+        // 1. topics에 새 글(topic) 추가
+        // 2. navigation 갱신: nav() 함수 호출하면 된다.
+        // 3. 작성한 글을 보여주는 페이지로 전환: selectedId 변경 및 read() 호출
+        function create() {
+            const content = `
+                <form onsubmit="createHandler(event);">
+                    <p><input type="text" name="title" placeholder="제목"></p>
+                    <p><textarea name="body" placeholder="본문"></textarea></p>
+                    <p><input type="submit" value="create"></p>
+                </form>
+            `;
+            document.querySelector('article').innerHTML = content;
+        }
+        function update() {}
+
+        // welcome, read, create, update 를 동적으로 렌더링하기 위한 함수 작성
+        function control() {
+            let contextUI = '' // 조건을 담기 위한 변수.
+            // topic, 즉 selectedId가 존재하는 경우에만 Update, Delete를 띄우기 위한 것.
+
+            if (selectedId !== null) {
+                contextUI = `
+                    <li><a href="/update">Update</a></li>
+                    <li><a href="/delete">Delete</a></li>
+                `;
+            }
+            document.querySelector('#control').innerHTML = `
+                <li><a href="/create" onclick="
+                    event.preventDefault(); // Create 항목 클릭시 기본 동작 정지
+                    create();
+                ">Create</a></li>
+                ${contextUI}
+            `;
+        }
+
+        // delete 기능 구현을 위한 함수 작성
+        function del() {}
+
+        nav(); // navigation renderer 호출: nav() 함수는 처음부터 로딩돼야 하기 때문.
+        welcome();
+        control();
+    </script>
+</body>
+</html>
