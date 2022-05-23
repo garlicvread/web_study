@@ -64,11 +64,12 @@
         let selectedId = null;
 
         // navHandler() 함수의 기능:
-        // 1. 링크의 작동 중지: event.preventDefault(). 기본 기능을 막아야 함.
+        // 1. 링크 작동 중지: event.preventDefault(). 기본 기능을 막아야 함.
         // 2. 아이디 값 알아냄: id="${e.id}" 속성으로 아이디 값을 주고, 그 아이디 값을 가져옴.
-        //    함수 바깥이면 this를 사용하면 되지만 지금 함수 안에서 작업하므로 this를 사용할 수 없다. 이를 위해서는 자기 자신을 가리키는 변수를 선언해야 한다.
+        //    함수 바깥이면 this를 사용하면 되지만 지금 함수 안에서 작업하므로 this를 사용할 수 없다.
+        //    이를 위해서는 자기 자신을 가리키는 변수를 선언해야 한다.
         //    여기서는 e.target.id; 를 사용하여 당해 아이디 값을 가져온다. 이 값을 전역변수인 selectedId에 저장한다.
-        // 3. 아이디와 일치하는 topics의 원소 찾기 --> read() {} 함수에서 처리
+        // 3. 아이디와 일치하는 topics 내부의 원소 찾기 --> read() {} 함수에서 처리
         // 4. 본문 생성 --> read() {} 함수에서 처리
         // 5. 본문 출력 --> read() {} 함수에서 처리
         function navHandler(e) {
@@ -102,6 +103,7 @@
             const tag = topics.map(e => `
                 <li>
                     <a href="/read/${e.id}" id="${e.id}" onclick="navHandler(event);">
+<!--                        onClick시 나타나는 이벤트를 navHandler함수에 위임-->
                         ${e.title}
                     </a>
                 </li>`).join('');
