@@ -14,9 +14,9 @@
 class Menu {
     handleEvent(event) { // 1.
         let method = "on" + event.type[0].toUpperCase() + event.type.slice(1); // 2.
-        if this.onMouseDown === method { // 3.
+        if (this.onMouseDown === method) { // 3.
             console.log("The mouse button is clicked.");
-        } else if this.onMouseUp === method {
+        } else if (this.onMouseUp === method) {
             console.log("The mouse button is released.");
         }
 

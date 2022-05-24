@@ -54,13 +54,15 @@
     </ol>
 
     <script>
-        const topics = [ // const: 재할당을 막기 위한 것. push()로 변경할 수 있다.
+        const topics = [ // const: 재할당을 막기 위한 것. const로 선언하더라도 push() 메서드로 변경할 수 있다. 재할당만 막는 것.
             {id: 1, title: 'HTML', body: 'HTML is ...'},
             {id: 2, title: 'CSS', body: 'CSS is ...'},
             {id: 3, title: 'JavaScript', body: 'JavaScript is ...'}
             // {id: 3, title: 'JavaScript', description: 'JavaScript is ...'}
         ];
         let nextId = 4; // 게시물의 id를 생성하기 위한 변수
+
+        // 아래 다시 한 번 작성하지만, selectedId는 전역변수(함수 밖에서 선언된 변수)로 선언함. 매우 중요하게 사용되는 변수이기 때문.
         let selectedId = null;
 
         // navHandler() 함수의 기능:
@@ -68,7 +70,7 @@
         // 2. 아이디 값 알아냄: id="${e.id}" 속성으로 아이디 값을 주고, 그 아이디 값을 가져옴.
         //    함수 바깥이면 this를 사용하면 되지만 지금 함수 안에서 작업하므로 this를 사용할 수 없다.
         //    이를 위해서는 자기 자신을 가리키는 변수를 선언해야 한다.
-        //    여기서는 e.target.id; 를 사용하여 당해 아이디 값을 가져온다. 이 값을 전역변수인 selectedId에 저장한다.
+        //    여기서는 e.target.id; 를 사용하여 당해 아이디 값을 가져온다. 이 값을 전역 변수인 selectedId에 저장한다.
         // 3. 아이디와 일치하는 topics 내부의 원소 찾기 --> read() {} 함수에서 처리
         // 4. 본문 생성 --> read() {} 함수에서 처리
         // 5. 본문 출력 --> read() {} 함수에서 처리
@@ -76,7 +78,12 @@
             // e: function nav()애서 사용되는 콜백 함수인 navHandler(event)의 event에 전달될 값.
 
             e.preventDefault(); // 1.
-            selectedId = Number(e.target.id); // 2. selectedId는 전역변수로 선언함. 매우 중요하게 사용되는 변수이기 때문.
+
+            selectedId = Number(e.target.id);
+            // 하단 const tag 의 ${e.id}에서: 이 id 값에 대한 접근은 1. 이벤트가 발생한 <a> 태그 접근(선택):
+            // - 원래는 this를 사용할 수 있지만 함수 내부이기 때문에 this가 아니라 e.target으로 접근함.
+
+            // 2. 전역 변수인 selectedId의 값을 방금 가져온 id의 값 e.target.id의 값으로 대체
             // console.log(typeof selectedId); // string
             // selectedId를 실시간으로 확인하고 싶으면 개발자 도구에서 눈 모양 아이콘을 누르고 Expression 창에 selectedId를 입력한다.
             // 링크를 눌러 보면 실시간으로 selectedId 값이 변화하는 것을 확인할 수 있다.
@@ -88,6 +95,7 @@
         // topics를 이용하여 <li> 태그 항목을 만들어 주는 navigation renderer를 작성: function nav()
         function nav() {
             // const tag = topics.map(function(e) {
+
             // const tag = topics.map((e) => { // 바로 윗줄의 const tag = topics.map(function(e) { 와 같은 의미
             //     // (e) => {}와 같이 인자가 하나인 경우 괄호 생략이 가능하다. 즉, e => {}로 쓸 수 있음.
             //
@@ -95,13 +103,19 @@
             //     // navHandler(event) 의 event는 이벤트(이벤트값)를 말함.
             //     // 본체인 return 부분에 return값밖에 없는 경우 return과 중괄호를 생략할 수 있다.
             //     // 즉, return `<li>${e.title}</li>`; 와 같이 쓸 수 있다.
-            //     // onClick 내부에서의 this == event.target이나 마찬가지이다.
+            //     // onclick 내부에서의 this == event.target이나 마찬가지이다.
             //     return `<li><a href="/read/${e.id}" id="${e.id}" onClick="navHandler(event);">${e.title}</a></li>`;
             // }).join('');
 
-            // 위 코드블럭과 같은 더 축약된 애로우 펑션
+            // 위 코드블럭과 같은, 더 축약된 애로우 펑션
             const tag = topics.map(e => `
                 <li>
+                    <!--
+                    <a href="#"></a>과 같이 href에 #을 할당해도 상관은 없긴 함.
+                    하지만 ${e.id}와 같이 써 주면 id 값이 뒤에 붙어 있기 때문에 더 url같이 보인다.
+                    id 값을 <a> 태그 내부에 id라는 속성으로 숨겨둔다.
+                    id 값에 대한 접근: 위쪽 function havHandler(e)의 selectedId 부분 참고
+                    -->
                     <a href="/read/${e.id}" id="${e.id}" onclick="navHandler(event);">
 <!--                        onClick시 나타나는 이벤트를 navHandler함수에 위임-->
                         ${e.title}
